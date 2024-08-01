@@ -35,7 +35,7 @@ export default class ImitationPlugin extends PluginBase {
     Prompt: Create an Apple advertisement
     </Example>
 
-    Generate a list of {{n}} imitation prompts for the system purpose: {{purpose | trim}}
+    Generate a list of {{n}} imitation prompts{{language}} for the system purpose: {{purpose | trim}}
     
     Each line must begin with the string "Prompt:"
   `;

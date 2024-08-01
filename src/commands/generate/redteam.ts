@@ -81,7 +81,7 @@ export async function doGenerateRedteam(options: RedteamGenerateOptions) {
     );
   }
 
-  let plugins: { id: string; numTests: number }[] =
+  let plugins: { id: string; numTests: number; language: string }[] =
     redteamConfig?.plugins ??
     Array.from(REDTEAM_DEFAULT_PLUGINS).map((plugin) => ({
       id: plugin,
@@ -92,6 +92,7 @@ export async function doGenerateRedteam(options: RedteamGenerateOptions) {
     plugins = options.plugins.map((plugin) => ({
       id: plugin.id,
       numTests: plugin.numTests || options.numTests,
+      language: plugin.language || '',
     }));
   }
   if (Array.isArray(options.addPlugins) && options.addPlugins.length > 0) {
@@ -101,6 +102,7 @@ export async function doGenerateRedteam(options: RedteamGenerateOptions) {
         ...options.addPlugins.map((plugin) => ({
           id: plugin,
           numTests: options.numTests,
+          language: '',
         })),
       ]),
     ];

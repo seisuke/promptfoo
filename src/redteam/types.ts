@@ -20,6 +20,7 @@ const redteamPluginObjectSchema = z.object({
     .positive()
     .optional()
     .describe('Number of tests to generate for this plugin'),
+  language: z.string().optional().describe('Language of tests ot generate for this plugin'),
 });
 
 /**
@@ -164,7 +165,7 @@ export type RedteamAssertionTypes = z.infer<typeof RedteamAssertionTypesSchema>;
 export interface SynthesizeOptions {
   injectVar?: string;
   numTests: number;
-  plugins: { id: string; numTests: number }[];
+  plugins: { id: string; numTests: number; language: string }[];
   prompts: string[];
   provider?: string;
   purpose?: string;
